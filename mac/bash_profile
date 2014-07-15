@@ -25,3 +25,5 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
 export PATH
 
 alias python=python3
+
+export EDITOR='mvim -f'
