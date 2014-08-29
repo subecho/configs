@@ -119,10 +119,10 @@ if has('gui_running')
     set guioptions-=T 
     set guioptions-=r
     set lines=40
-    set columns=110
+    set columns=90
     colorscheme solarized
     set bg=light
-    set guifont=Consolas:h13
+    set guifont=Ubuntu\ Mono:h12
 endif
 
 set nobackup
