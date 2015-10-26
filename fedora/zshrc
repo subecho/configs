@@ -1,0 +1,14 @@
+# Created by newuser for 5.0.8
+
+source ~/Downloads/.antigen/antigen.zsh
+
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle pip
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme dflazz
+
+antigen apply
+
+alias common="vim ~/Documents/commonplace/commonplace.txt"
