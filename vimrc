@@ -5,7 +5,20 @@
 " Modified from a .vimrc file from Gustav Pican (whom I should buy a beer for)
 
 " Enable Pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/desertEx'
+Plugin 'tomasr/molokai'
+call vundle#end()
+filetype plugin indent on
+
 let g:airline_powerline_fonts = 1
 colorscheme desertEx
 
@@ -130,7 +143,8 @@ if has('gui_running')
     set columns=90
     colorscheme desertEx
     set bg=dark
-    set guifont=Fantasque\ Sans\ Mono\ 10
+    "set guifont=Fantasque\ Sans\ Mono\ 10
+    set guifont=Liberation\ Mono\ for\ Powerline\ 9
     let g:airline_powerline_fonts = 1
 endif
 
