@@ -13,4 +13,3 @@ antigen theme dflazz
 
 antigen apply
 
-alias rhldap='ldapsearch -x -LLL -h ldap.corp -b ou=users,dc=redhat,dc=com'
