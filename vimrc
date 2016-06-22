@@ -16,11 +16,28 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/desertEx'
 Plugin 'tomasr/molokai'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'rust-lang/rust.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()
 filetype plugin indent on
 
+" Tell powerline that we're using powerline compatible fonts
 let g:airline_powerline_fonts = 1
-colorscheme desertEx
+
+" Enable Rust autoformatting on buffer write
+let g:rustfmt_autosave = 1
+
+" Set the colorscheme
+colorscheme PaperColor
+
+" Set the background type
+set bg=dark
 
 " vim Extensions
 "  These essentially make vim VERY non-vi compatable, but that's a good thing
@@ -141,11 +158,10 @@ if has('gui_running')
     set guioptions-=r
     set lines=40
     set columns=90
-    colorscheme desertEx
+    colorscheme PaperColor
     set bg=dark
-    "set guifont=Fantasque\ Sans\ Mono\ 10
-    set guifont=Liberation\ Mono\ for\ Powerline\ 9
-    let g:airline_powerline_fonts = 1
+    set guifont=Fantasque\ Sans\ Mono\ 10
+    "set guifont=Liberation\ Mono\ for\ Powerline\ 9
 endif
 
 set nobackup
