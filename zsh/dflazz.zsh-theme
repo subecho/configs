@@ -18,3 +18,14 @@ MODE_INDICATOR="%{$fg_bold[magenta]%}<%{$reset_color%}%{$fg[magenta]%}<<%{$reset
 # TODO use 265 colors
 #MODE_INDICATOR="$FX[bold]$FG[020]<$FX[no_bold]%{$fg[blue]%}<<%{$reset_color%}"
 # TODO use two lines if git
+
+to_dark_prompt() {
+    PROMPT='%{${fg_bold[magenta]}%}%m%{${fg_bold[green]}%} :: %{$reset_color%}%{${fg[red]}%}%3~ $(git_prompt_info)%{${fg[$CARETCOLOR]}%}
+  %{${fg[cyan]}%}[%*] %{${fg_bold[yellow]}%}%#%{${reset_color}%} '
+}
+
+to_light_prompt() {
+    PROMPT='%{${fg[magenta]}%}%m%{${fg_bold[green]}%} :: %{$reset_color%}%{${fg[red]}%}%3~ $(git_prompt_info)%{${fg[$CARETCOLOR]}%}
+  %{${fg[cyan]}%}[%*] %{${fg[yellow]}%}%#%{${reset_color}%} '
+}
+
