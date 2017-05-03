@@ -12,8 +12,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/desertEx'
 Plugin 'tomasr/molokai'
 Plugin 'godlygeek/tabular'
@@ -30,12 +30,15 @@ filetype plugin indent on
 
 " Tell powerline that we're using powerline compatible fonts
 let g:airline_powerline_fonts = 1
+"let g:Powerline_symbols = 'fancy'
+"set encoding=utf-8
+"set t_Co=256
+"set fillchars+=stl:\ ,stlnc:\
+"set term=xterm-256color
+"set termencoding=utf-8
 
 " Enable Rust autoformatting on buffer write
 let g:rustfmt_autosave = 1
-
-" Set the colorscheme
-colorscheme PaperColor
 
 " Set the background type
 set bg=dark
@@ -131,7 +134,6 @@ set matchpairs+=<:>
 " Make the colors appear better on a light/dark background terminal
 "set bg=light
 set bg=dark
-colorscheme desertEx
 
 " Set the number of spaces to insert when tab is pressed
 set tabstop=4
@@ -160,10 +162,8 @@ if has('gui_running')
     set guioptions-=r
     set lines=40
     set columns=90
-    colorscheme PaperColor
+    colorscheme dracula 
     set bg=dark
-    set guifont=Fantasque\ Sans\ Mono\ 10
-    "set guifont=Liberation\ Mono\ for\ Powerline\ 9
 endif
 
 set nobackup
