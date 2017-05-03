@@ -24,6 +24,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'rust-lang/rust.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tmux-plugins/vim-tmux'
+Plugin 'dracula/vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -38,6 +39,7 @@ colorscheme PaperColor
 
 " Set the background type
 set bg=dark
+colorscheme dracula
 
 " vim Extensions
 "  These essentially make vim VERY non-vi compatable, but that's a good thing
