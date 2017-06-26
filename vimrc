@@ -1,6 +1,6 @@
-" .vimrc 
+" .vimrc
 " Dustin Schoenbrun
-" 
+"
 " This file defines settings and preferences for the vim text editor.
 " Modified from a .vimrc file from Gustav Pican (whom I should buy a beer for)
 
@@ -54,12 +54,11 @@ set modelines=5
 "  This section defines all sorts of options to tweak the UI for vim
 
 " Syntax Highlighting
-"  Highlights keywords, strings, numbers, etc in source files.  You'd have to 
-"  be some sort of nilhilist to not have this on working on code.
+"  Highlights keywords, strings, numbers, etc in source files.
 syntax on
 
 " Backspace Options
-"  Makes backspace a little smarter by allowing it to backspace 'up' lines 
+"  Makes backspace a little smarter by allowing it to backspace 'up' lines
 "  among other such nicities
 set backspace=indent,eol,start
 
@@ -158,11 +157,11 @@ endfunction
 
 " Set up some gVim options here rather than in gvimrc
 if has('gui_running')
-    set guioptions-=T 
+    set guioptions-=T
     set guioptions-=r
     set lines=40
     set columns=90
-    colorscheme dracula 
+    colorscheme dracula
     set bg=dark
 endif
 
@@ -184,3 +183,6 @@ let html_use_css = 1
 
 let vjde_completion_key='<c-space>'
 
+" Show Trailing Whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
