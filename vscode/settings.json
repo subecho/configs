@@ -1,0 +1,26 @@
+{
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.tabSize": 2,
+    "python.jediEnabled": false,
+    "editor.rulers": [
+        80,
+        100
+    ],
+    "workbench.iconTheme": "vscode-icons",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": {"when": "$(basename).py"},
+        "**/.eggs": true,
+        "**/.htmlcov_unit": true,
+    },
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Noctis Uva",
+    "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14
+}
