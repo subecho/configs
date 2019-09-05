@@ -1,4 +1,3 @@
-" Enable Pathogen
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -7,6 +6,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/desertEx'
 Plugin 'tomasr/molokai'
 Plugin 'godlygeek/tabular'
@@ -15,25 +15,29 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'rust-lang/rust.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'tmux-plugins/vim-tmux'
 Plugin 'dracula/vim'
+Plugin 'dag/vim-fish'
+Plugin 'raimon49/requirements.txt.vim'
+Plugin 'gruvbox-community/gruvbox'
 call vundle#end()
 filetype plugin indent on
 
 " Tell powerline that we're using powerline compatible fonts
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+let g:airline_theme='gruvbox'
 
 " Enable Rust autoformatting on buffer write
 let g:rustfmt_autosave = 1
 
-colorscheme simple256
+" Git Gutter Settings
+set updatetime=100
+
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
 set bg=dark
 set nocompatible
 set modeline
@@ -62,7 +66,7 @@ set nowrap
 set autoindent
 
 " Set indentations to be the specified number of spaces
-set shiftwidth=4
+set shiftwidth=2
 
 " Replace tabs with spaces
 set expandtab
@@ -77,7 +81,7 @@ set formatoptions+=tcq
 set matchpairs+=<:>
 
 " Set the number of spaces to insert when tab is pressed
-set tabstop=4
+set tabstop=2
 
 " Set line numbers to be on
 set number
