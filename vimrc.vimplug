@@ -11,6 +11,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'raimon49/requirements.txt.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'morhetz/gruvbox'
 call plug#end()
 filetype plugin indent on
 
@@ -19,8 +20,13 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-colorscheme Tomorrow-Night-Eighties
-let g:airline_theme='tomorrow'
+
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_number_column = 'bg1'
+let g:gruvbox_sign_column = 'bg2'
+set cursorlineopt=number
+set cursorline
+colorscheme gruvbox
 
 " Enable Rust autoformatting on buffer write
 let g:rustfmt_autosave=1
@@ -77,6 +83,9 @@ set tabstop=2
 " Use line numbers
 set number
 
+" And Use Hybrid Line Numbering
+set relativenumber
+
 " Hit the specified key to go into paste mode
 set pastetoggle=<F12>
 
@@ -88,6 +97,9 @@ set incsearch
 
 " Don't keep showing highlighted search terms.
 set nohlsearch
+
+" Set a ruler
+set colorcolumn=100
 
 " Set tags to look for these files
 set tags=./tags,./TAGS,tags,TAGS,~/.tags,~/.vim/javatags

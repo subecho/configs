@@ -25,7 +25,7 @@ function fish_prompt
 
     # Main
     set last_status $status
-    echo -n (set_color b2cee1)Warbler (set_color f08b34)(prompt_pwd)(set_color normal)
+    echo -n (set_color b2cee1)Vega (set_color f08b34)(prompt_pwd)(set_color normal)
     printf "%s\n" (__fish_git_prompt)
     echo -n (set_color F08B34)' ❯'(set_color b2cee1)'❯ '
 
