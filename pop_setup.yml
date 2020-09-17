@@ -1,0 +1,76 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Upgrade All Packages to Latest Version
+      become: true
+      apt:
+        name: "*"
+        state: latest
+    - name: Install Prerequesites
+      become: true
+      apt:
+        name: [git, vim]
+    - name: Create Code Directory
+      file:
+        path: ~/Code
+        state: directory
+    - name: Git Clone Configs Repository
+      git:
+        repo: 'https://github.com/subecho/configs.git'
+        dest: ~/Code/configs
+    - name: Create vim Directory for Plugins
+      file:
+        path: ~/.vim/autoload
+        state: directory
+    - name: Install Vim Plug
+      get_url:
+        url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        dest: ~/.vim/autoload/plug.vim
+    - name: Copy Vim Config to User Home
+      copy:
+        src: ~/Code/configs/vimrc.vimplug
+        dest: ~/.vimrc
+    - name: Install Vim Plugins Specified in vimrc
+      shell: vim -E -s -u ~/.vimrc +PlugInstall +qall
+    - name: Create Local Fonts Directory
+      file:
+        path: ~/.local/share/fonts
+        state: directory
+    - name: Download JetBrains Mono Font
+      get_url:
+        url: https://download.jetbrains.com/fonts/JetBrainsMono-2.001.zip
+        dest: /tmp/
+    - name: Unzip the Zip Archive
+      unarchive:
+        src: /tmp/JetBrainsMono-2.001.zip
+        dest: /tmp/
+    - name: Copy the Truetype Fonts to Home Directory
+      synchronize:
+        src: /tmp/ttf
+        dest: ~/.local/share/fonts
+    - name: Refresh the Font Cache
+      shell: fc-cache -f -v
+    - name: Install Software
+      become: true
+      apt:
+        name: [
+          fish,
+          nodejs,
+          npm,
+          vlc,
+          golang,
+          rustc,
+          htop,
+          neofetch,
+          telegram-desktop,
+        ]
+    - name: Install Spotify Client Flatpak
+      flatpak:
+        name: com.spotify.Client
+        state: present
+        remote: flathub
+        method: user
+    - name: Install Visual Studio Code Package
+      become: true
+      apt:
+        deb: https://go.microsoft.com/fwlink/?LinkID=760868
