@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  registry:
+    ports:
+      - '6000:5000'
+    restart: always
+    container_name: registry
+    volumes:
+      - '/mnt/registry:/var/lib/registry'
+      - '~/config.yml:/etc/docker/registry/config.yml'
+    image: registry
+
