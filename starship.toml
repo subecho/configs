@@ -1,0 +1,21 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+format = "$all"
+
+[hostname]
+ssh_only = false
+format = "[G.](fg:#64b5f6)[T.](fg:#b0bec5) in "
+
+[character]
+success_symbol = "[⟫](fg:#81c784)"
+error_symbol = "[⟫](fg:#f44336)"
+
+[directory]
+style = "#ff8a65"
+
+[git_branch]
+style = "#9575cd"
+
+[git_metrics]
+disabled = false
