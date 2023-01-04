@@ -26,7 +26,7 @@ let g:gruvbox_number_column = 'bg2'
 let g:gruvbox_sign_column = 'bg1'
 set cursorline
 set cursorlineopt=number
-colorscheme gruvbox
+colorscheme PaperColor
 
 set relativenumber
 
@@ -126,3 +126,6 @@ set signcolumn=yes
 highlight GitGutterAdd guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" Do not let colorschemes override terminal background color
+highlight Normal ctermbg=NONE
