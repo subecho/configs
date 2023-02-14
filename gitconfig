@@ -1,7 +1,0 @@
-[user]
-	name = Dustin Schoenbrun
-	email = dustin@subecho.org
-[core]
-	editor = vim
-[commit]
-	gpgsign = true
