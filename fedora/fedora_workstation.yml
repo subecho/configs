@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Upgrade All Packages to Latest Version
+      become: true
+      dnf:
+        name: "*"
+        state: latest
+    - name: Install Required Packages
+      become: true
+      dnf:
+        name: [
+          fish,
+          golang,
+          neofetch,
+          rust,
+          gcc,
+          g++,
+          alacritty,
+          neovim,
+          bat,
+          git-delta,
+          exa,
+          ripgrep,
+        ]
+
