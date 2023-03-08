@@ -10,17 +10,42 @@
       become: true
       dnf:
         name: [
-          fish,
-          golang,
-          neofetch,
-          rust,
-          gcc,
-          g++,
           alacritty,
-          neovim,
           bat,
-          git-delta,
           exa,
+          fish,
+          fzf,
+          g++,
+          gcc,
+          git-delta,
+          golang,
+          htop,
+          luarocks,
+          neofetch,
+          neovim,
+          nodejs,
           ripgrep,
+          ruby,
+          rust,
+          tig,
         ]
-
+    - name: Create Code Directory
+      file:
+        path: ~/Code
+        state: directory
+          #    - name: Clone Configs Repository
+          #      git:
+          #        repo: "https://github.com/subecho/configs.git"
+          #        dest: ~/Code/configs
+    - name: Download RPMFusion Free Repo RPM
+      become: true
+      dnf:
+        name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm"
+        state: present
+        sslverify: false
+    - name: Download RPMFusion Nonfree Repo RPM
+      become: true
+      dnf:
+        name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm"
+        state: present
+        sslverify: false
