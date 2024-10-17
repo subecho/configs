@@ -1,4 +1,4 @@
-function ls --wraps exa --description 'List contents of the directory'
-  exa $argv
+function ls --wraps eza --description 'List contents of the directory'
+  eza $argv
 end
 

@@ -1,4 +1,4 @@
-function la --wraps exa --description 'List contents of directory including hidden files'
-  exa -a $argv
+function la --wraps eza --description 'List contents of directory including hidden files'
+  eza -a $argv
 end
 
