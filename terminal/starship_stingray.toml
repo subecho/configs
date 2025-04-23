@@ -1,0 +1,16 @@
+add_newline = false
+
+format = "$all"
+
+[hostname]
+ssh_only = false
+format = "[S](fg:#a72000)[t](fg:#b13000)[i](fg:#ba4101)[n](fg:#c45101)[g](fg:#ce6201)[r](fg:#d87201)[a](fg:#e18302)[y](fg:#eb9302) in "
+
+[directory]
+style = "#967daa"
+
+[git_branch]
+style = "#66a996"
+
+[git_metrics]
+disabled = true
