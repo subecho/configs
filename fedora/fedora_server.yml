@@ -1,0 +1,133 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Upgrade All Packages to Latest Version
+      become: true
+      dnf:
+        name: "*"
+        state: latest
+    - name: Install Required Packages
+      become: true
+      dnf:
+        name: [
+          alacritty,
+          bat,
+          btop,
+          cpufetch,
+          eza,
+          fastfetch,
+          fish,
+          fzf,
+          g++,
+          gcc,
+          git-delta,
+          golang,
+          neovim,
+          node,
+          python-unversioned-command,
+          ripgrep,
+          tig,
+          tmux,
+        ]
+
+    - name: Grab the GPG Key for RPMFusion Free Repo
+      become: true
+      rpm_key:
+        key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
+        state: present
+
+    - name: Grab the GPG Key for RPMFusion Non-Free Repo
+      become: true
+      rpm_key:
+        key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+        state: present
+
+    - name: Download RPMFusion Free Repo RPM
+      become: true
+      dnf:
+        name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-41.noarch.rpm"
+        state: present
+
+    - name: Download RPMFusion Nonfree Repo RPM
+      become: true
+      dnf:
+        name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-41.noarch.rpm"
+        state: present
+    
+    - name: Ensure tmux's Plugins Directory Exists
+      file:
+        path: ~/.tmux/plugins
+        state: directory
+        
+    - name: Ensure tmux's XDG_CONFIG_HOME Directory Exists
+      file:
+        path: ~/.config/tmux
+        state: directory
+
+    - name: Install TPM, the tmux Package Manager
+      git:
+        repo: "https://github.com/tmux-plugins/tpm"
+        dest: ~/.tmux/plugins/tpm
+      
+    - name: Copy tmux Configuration to Proper Place
+      copy:
+        src: ~/Code/configs/terminal/tmux.conf
+        dest: ~/.config/tmux/tmux.conf
+        force: false
+
+    - name: Check if AstroNvim is Already Installed
+      stat:
+        path: ~/.config/nvim
+      register: nvim_configured
+      
+
+    - name: Check if NeoVim's Work Directories Exist
+      when: not nvim_configured.stat.exists
+      stat:
+        path: "{{ item }}"
+      loop:
+        - ~/.config/nvim
+        - ~/.local/share/nvim
+        - ~/.local/state/nvim
+        - ~/.cache/nvim
+      loop_control:
+        label: "{{ item }}"
+      register: dir_stats
+
+    - name: Backup the Directories that Exist
+      command: "mv {{ item.item }} {{ item.item }}.bkup"
+      loop: "{{ dir_stats.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+      when: not nvim_configured.stat.exists and item.stat.exists
+
+    - name: Clone AstroNvim Repository
+      when: not nvim_configured.stat.exists
+      git:
+        repo: "https://github.com/AstroNvim/template"
+        dest: ~/.config/nvim
+        depth: 1
+
+    - name: Remove AstroNvim's .git Directory
+      when: not nvim_configured.stat.exists
+      file:
+        path: ~/.config/nvim/.git
+        state: absent
+
+    - name: Is Cargo Installed for Rust?
+      shell: command -v cargo
+      register: cargo_exists
+      ignore_errors: true
+
+    - name: Download RustUp Installer
+      when: cargo_exists is failed
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/sh.rustup.rs
+        mode: "0755"
+        force: "yes"
+
+    - name: Install Rust/Cargo With RustUp
+      when: cargo_exists is failed
+      shell: /tmp/sh.rustup.rs -y
+
